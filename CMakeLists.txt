@@ -90,7 +90,9 @@ target_link_libraries(${PROJECT_NAME}_mono
   -lcrypto
 )
 
-rosidl_target_interfaces(${PROJECT_NAME}_mono ${PROJECT_NAME} "rosidl_typesupport_cpp")
+rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+
+target_link_libraries(${PROJECT_NAME}_mono ${cpp_typesupport_target})
 
 #Stereo
 add_executable (${PROJECT_NAME}_stereo
@@ -110,7 +112,7 @@ ${ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
 -lcrypto
 )
 
-rosidl_target_interfaces(${PROJECT_NAME}_stereo ${PROJECT_NAME} "rosidl_typesupport_cpp")
+target_link_libraries(${PROJECT_NAME}_stereo ${cpp_typesupport_target})
 
 #RGBD
 add_executable(${PROJECT_NAME}_rgbd
@@ -130,7 +132,8 @@ ${ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
 -lcrypto
 )
 
-rosidl_target_interfaces(${PROJECT_NAME}_rgbd ${PROJECT_NAME} "rosidl_typesupport_cpp")
+target_link_libraries(${PROJECT_NAME}_rgbd ${cpp_typesupport_target})
+
 
 install(TARGETS ${PROJECT_NAME}_mono ${PROJECT_NAME}_stereo ${PROJECT_NAME}_rgbd
   RUNTIME DESTINATION lib/${PROJECT_NAME}
@@ -158,5 +161,8 @@ ament_export_dependencies(
   ${dependencies}
   rosidl_default_runtime
 )
+
+# Add path for runtime
+list(APPEND CMAKE_INSTALL_RPATH "/usr/local/lib" "${ORB_SLAM3_DIR}/lib" "${ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib" "${ORB_SLAM3_DIR}/Thirdparty/g2o/lib")
 
 ament_package()
