@@ -55,7 +55,7 @@
 #include "tf2_ros/create_timer_ros.h"
 #include "tf2/utils.h"
 
-#include "orb_slam2_ros/srv/save_map.hpp"
+#include "orb_slam3_ros/srv/save_map.hpp"
 
 class Node : public rclcpp::Node
 {
@@ -86,8 +86,8 @@ private:
   void PublishRenderedImage(cv::Mat image);
   void SaveMapSrv(
     const shared_ptr<rmw_request_id_t>/*request_header*/,
-    const shared_ptr<orb_slam2_ros::srv::SaveMap::Request> request,
-    const shared_ptr<orb_slam2_ros::srv::SaveMap::Response> response);
+    const shared_ptr<orb_slam3_ros::srv::SaveMap::Request> request,
+    const shared_ptr<orb_slam3_ros::srv::SaveMap::Response> response);
   void LoadOrbParameters(sensor_msgs::msg::CameraInfo::SharedPtr camera_info);
   void cameraInfoCallback(sensor_msgs::msg::CameraInfo::SharedPtr msg);
 
@@ -103,7 +103,7 @@ private:
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr map_points_publisher_;
   rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_publisher_;
   rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr camera_info_sub_;
-  rclcpp::Service<orb_slam2_ros::srv::SaveMap>::SharedPtr service_server_;
+  rclcpp::Service<orb_slam3_ros::srv::SaveMap>::SharedPtr service_server_;
 
   std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
   std::shared_ptr<tf2_ros::TransformListener> tf_listener_;

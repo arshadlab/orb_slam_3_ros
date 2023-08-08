@@ -52,7 +52,7 @@ if you use ORB-SLAM2 (Stereo or RGB-D) in an academic work, please cite:
       year={2017}
      }
 
-# 2. Building orb_slam2_ros
+# 2. Building orb_slam3_ros
 We have tested the library in **Ubuntu 16.04** with **ROS Kinetic** and **Ubuntu 18.04** with **ROS Melodic**. A powerful computer (e.g. i7) will ensure real-time performance and provide more stable and accurate results.
 A C++11 compiler is needed.
 
@@ -159,15 +159,15 @@ source devel/setup.bash
 ## Suported cameras
 | Camera               | Mono                                                           | Stereo                                                           | RGBD                                                       |
 |----------------------|----------------------------------------------------------------|------------------------------------------------------------------|------------------------------------------------------------|
-| Intel RealSense r200 | ``` roslaunch orb_slam2_ros orb_slam2_r200_mono.launch ```     | ``` roslaunch orb_slam2_ros orb_slam2_r200_stereo.launch ```     | ``` roslaunch orb_slam2_ros orb_slam2_r200_rgbd.launch ``` |
-| Intel RealSense d435 | ``` roslaunch orb_slam2_ros orb_slam2_d435_mono.launch ```     | -                                                                | ``` roslaunch orb_slam2_ros orb_slam2_d435_rgbd.launch ``` |
-| Mynteye S            | ```roslaunch orb_slam2_ros orb_slam2_mynteye_s_mono.launch ``` | ```roslaunch orb_slam2_ros orb_slam2_mynteye_s_stereo.launch ``` | -                                                          |                     |                                                            |                                                              |                                                            |
+| Intel RealSense r200 | ``` roslaunch orb_slam3_ros orb_slam2_r200_mono.launch ```     | ``` roslaunch orb_slam3_ros orb_slam2_r200_stereo.launch ```     | ``` roslaunch orb_slam3_ros orb_slam2_r200_rgbd.launch ``` |
+| Intel RealSense d435 | ``` roslaunch orb_slam3_ros orb_slam2_d435_mono.launch ```     | -                                                                | ``` roslaunch orb_slam3_ros orb_slam2_d435_rgbd.launch ``` |
+| Mynteye S            | ```roslaunch orb_slam3_ros orb_slam2_mynteye_s_mono.launch ``` | ```roslaunch orb_slam3_ros orb_slam2_mynteye_s_stereo.launch ``` | -                                                          |                     |                                                            |                                                              |                                                            |
 
-Use the command from the corresponding cell for your camera to launch orb_slam2_ros with the right parameters for your setup.
+Use the command from the corresponding cell for your camera to launch orb_slam3_ros with the right parameters for your setup.
 
 # 6. Docker
-An easy way is to use orb_slam2_ros with Docker. This repository ships with a Dockerfile based on ROS kinetic.
-The container includes orb_slam2_ros as well as the Intel RealSense package for quick testing and data collection.
+An easy way is to use orb_slam3_ros with Docker. This repository ships with a Dockerfile based on ROS kinetic.
+The container includes orb_slam3_ros as well as the Intel RealSense package for quick testing and data collection.
 
 # 7. FAQ
 Here are some answers to frequently asked questions.

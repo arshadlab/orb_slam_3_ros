@@ -101,7 +101,7 @@ void Node::init(const ORB_SLAM3::System::eSensor & sensor)
   camera_info_sub_ = create_subscription<sensor_msgs::msg::CameraInfo>(
       "/camera/camera_info", 1, std::bind(&Node::cameraInfoCallback, this, std::placeholders::_1));
 
-  service_server_ = create_service<orb_slam2_ros::srv::SaveMap>(
+  service_server_ = create_service<orb_slam3_ros::srv::SaveMap>(
       node_name_ + "/save_map",
       std::bind(
           &Node::SaveMapSrv, this,
@@ -302,8 +302,8 @@ sensor_msgs::msg::PointCloud2 Node::MapPointsToPointCloud(
 
 void Node::SaveMapSrv(
   const shared_ptr<rmw_request_id_t>,
-  const shared_ptr<orb_slam2_ros::srv::SaveMap::Request> request,
-  const shared_ptr<orb_slam2_ros::srv::SaveMap::Response> response)
+  const shared_ptr<orb_slam3_ros::srv::SaveMap::Request> request,
+  const shared_ptr<orb_slam3_ros::srv::SaveMap::Response> response)
 {
   if (request->name == "text")
       orb_slam_->SaveAtlas(ORB_SLAM3::System::FileType::TEXT_FILE);
