@@ -42,7 +42,7 @@ def generate_launch_description():
             'setting_file',
             default_value=os.path.join(
                 get_package_share_directory("orb_slam3_ros"),
-                'ros', 'config', 'TUM1.yaml'),
+                'ros', 'config', 'ORBSLAM3.yaml'),
             description='Full path to vocabulary file to use'),
 
         Node(
