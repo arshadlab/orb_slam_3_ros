@@ -2,7 +2,7 @@
 * This file is part of ORB-SLAM2.
 *
 * Copyright (C) 2014-2016 Raúl Mur-Artal <raulmur at unizar dot es> (University of Zaragoza)
-* For more information see <https://github.com/raulmur/ORB_SLAM2>
+* For more information see <https://github.com/raulmur/ORB_SLAM3>
 *
 * ORB-SLAM2 is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ RGBDNode::RGBDNode(
 
 void RGBDNode::init()
 {
-  Node::init(ORB_SLAM2::System::RGBD);
+  Node::init(ORB_SLAM3::System::RGBD);
 
   rgb_subscriber_ = std::make_shared<message_filters::Subscriber<sensor_msgs::msg::Image>>(
     shared_from_this(), "/camera/rgb/image_raw");
@@ -81,6 +81,20 @@ void RGBDNode::ImageCallback(
     return;
   }
 
+//printf("cv_ptrRGB header seq: %u\n", cv_ptrRGB->header.seq);
+printf("cv_ptrRGB header stamp: %u.%u\n", cv_ptrRGB->header.stamp.sec, cv_ptrRGB->header.stamp.nanosec);
+printf("cv_ptrRGB header frame_id: %s\n", cv_ptrRGB->header.frame_id.c_str());
+printf("cv_ptrRGB encoding: %s\n", cv_ptrRGB->encoding.c_str());
+printf("cv_ptrRGB image dimensions: %d x %d\n", cv_ptrRGB->image.rows, cv_ptrRGB->image.cols);
+
+printf("msgRGB header seq: %u\n", msgRGB->header.stamp.sec);
+printf("msgRGB header stamp: %u.%u\n", msgRGB->header.stamp.sec, msgRGB->header.stamp.nanosec);
+printf("msgRGB header frame_id: %s\n", msgRGB->header.frame_id.c_str());
+printf("msgRGB height: %d\n", msgRGB->height);
+printf("msgRGB width: %d\n", msgRGB->width);
+printf("msgRGB encoding: %s\n", msgRGB->encoding.c_str());
+
+
   cv_bridge::CvImageConstPtr cv_ptrD;
   try {
     cv_ptrD = cv_bridge::toCvShare(msgD);
@@ -94,5 +108,5 @@ void RGBDNode::ImageCallback(
   rclcpp::Time msg_time = cv_ptrRGB->header.stamp;
   orb_slam_->TrackRGBD(cv_ptrRGB->image, cv_ptrD->image, msg_time.seconds());
 
-  Update();
+  //Update();
 }

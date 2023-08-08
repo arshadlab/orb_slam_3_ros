@@ -1,6 +1,6 @@
 # ORB-SLAM2
 **ORB-SLAM2 Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2)).
-The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM2.git).
+The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM3.git).
 
 # ORB-SLAM2 ROS node
 This is the ROS implementation of the ORB-SLAM2 real-time SLAM library for **Monocular**, **Stereo** and **RGB-D** cameras that computes the camera trajectory and a sparse 3D reconstruction (in the stereo and RGB-D case with true scale). It is able to detect loops and relocalize the camera in real time. This implementation removes the Pangolin dependency, and the original viewer. All data I/O is handled via ROS topics. For vizualization you can use RViz. This repository is maintained by [Lennart Haller](http://lennarthaller.de) on behalf of [appliedAI](http://appliedai.de).
@@ -10,7 +10,7 @@ This is the ROS implementation of the ORB-SLAM2 real-time SLAM library for **Mon
 - Data I/O via ROS topics
 - Parameters can be set with the rqt_reconfigure gui during runtime
 - Very quick startup through considerably sped up vocab file loading
-- Full Map save and load functionality based on [this PR](https://github.com/raulmur/ORB_SLAM2/pull/381).
+- Full Map save and load functionality based on [this PR](https://github.com/raulmur/ORB_SLAM3/pull/381).
 - Loading of all parameters via launch file
 - Supports loading cam parameters from cam_info topic
 
@@ -22,7 +22,7 @@ This is the ROS implementation of the ORB-SLAM2 real-time SLAM library for **Mon
 [DBoW2 Place Recognizer] Dorian Gálvez-López and Juan D. Tardós. **Bags of Binary Words for Fast Place Recognition in Image Sequences**. *IEEE Transactions on Robotics,* vol. 28, no. 5, pp.  1188-1197, 2012. **[PDF](http://doriangalvez.com/php/dl.php?dlp=GalvezTRO12.pdf)**
 
 # 1. License
-ORB-SLAM2 is released under a [GPLv3 license](https://github.com/aaide/ORB_SLAM2_ROS/blob/master/License-gpl.txt). For a list of all code/library dependencies (and associated licenses), please see [Dependencies.md](https://github.com/aaide/ORB_SLAM2_ROS/blob/master/Dependencies.md).
+ORB-SLAM2 is released under a [GPLv3 license](https://github.com/aaide/ORB_SLAM3_ROS/blob/master/License-gpl.txt). For a list of all code/library dependencies (and associated licenses), please see [Dependencies.md](https://github.com/aaide/ORB_SLAM3_ROS/blob/master/Dependencies.md).
 
 For a closed-source version of ORB-SLAM2 for commercial purposes, please contact the authors: orbslam (at) unizar (dot) es.
 

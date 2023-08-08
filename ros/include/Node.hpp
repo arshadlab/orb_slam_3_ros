@@ -2,7 +2,7 @@
 * This file is part of ORB-SLAM2.
 *
 * Copyright (C) 2014-2016 Raúl Mur-Artal <raulmur at unizar dot es> (University of Zaragoza)
-* For more information see <https://github.com/raulmur/ORB_SLAM2>
+* For more information see <https://github.com/raulmur/ORB_SLAM3>
 *
 * ORB-SLAM2 is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ public:
     const std::string & node_name,
     const rclcpp::NodeOptions & node_options);
 
-  void init(const ORB_SLAM2::System::eSensor & sensor);
+  void init(const ORB_SLAM3::System::eSensor & sensor);
 
   ~Node();
 
@@ -75,12 +75,12 @@ protected:
     return initialized_;
   }
 
-  ORB_SLAM2::System * orb_slam_;
+  ORB_SLAM3::System * orb_slam_;
   rclcpp::Time current_frame_time_;
   std::shared_ptr<image_transport::ImageTransport> image_transport_;
 
 private:
-  void PublishMapPoints(std::vector<ORB_SLAM2::MapPoint *> map_points);
+  void PublishMapPoints(std::vector<ORB_SLAM3::MapPoint *> map_points);
   void PublishPositionAsTransform(cv::Mat position);
   void PublishPositionAsPoseStamped(cv::Mat position);
   void PublishRenderedImage(cv::Mat image);
@@ -92,10 +92,12 @@ private:
   void cameraInfoCallback(sensor_msgs::msg::CameraInfo::SharedPtr msg);
 
   tf2::Transform TransformFromMat(cv::Mat position_mat);
-  sensor_msgs::msg::PointCloud2 MapPointsToPointCloud(
-    std::vector<ORB_SLAM2::MapPoint *> map_points);
+  cv::Mat FromSE3fToMat(const Sophus::SE3f& position_mat);
 
-  ORB_SLAM2::System::eSensor sensor_;
+  sensor_msgs::msg::PointCloud2 MapPointsToPointCloud(
+    std::vector<ORB_SLAM3::MapPoint *> map_points);
+
+  ORB_SLAM3::System::eSensor sensor_;
 
   image_transport::Publisher rendered_image_publisher_;
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr map_points_publisher_;
@@ -115,6 +117,7 @@ private:
   std::string camera_frame_id_param_;
   std::string map_file_name_param_;
   std::string voc_file_name_param_;
+  std::string setting_file_name_param_;
   bool load_map_param_;
   bool publish_pointcloud_param_;
   bool publish_tf_param_;
