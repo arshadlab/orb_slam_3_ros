@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(orb_slam2_ros)
+project(orb_slam3_ros)
 
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
@@ -15,6 +15,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(ORB_SLAM3_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ORB_SLAM3)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/")
 
 find_package(ament_cmake REQUIRED)
@@ -32,9 +33,6 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(Pangolin REQUIRED )
 find_package(ORB_SLAM3 REQUIRED )
 find_package(Eigen3 3.1.0 REQUIRED)
-
-
-message("***** ${ORB_SLAM3_INCLUDE_DIRS}")
 
 
 set(dependencies
@@ -81,12 +79,13 @@ add_executable(${PROJECT_NAME}_mono
 ament_target_dependencies(${PROJECT_NAME}_mono
   ${dependencies}
 )
+
 target_link_libraries(${PROJECT_NAME}_mono
   ${OpenCV_LIBS}
   ${EIGEN3_LIBS}
   ${Pangolin_LIBRARIES}
-  $ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-  $ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/g2o/lib/libg2o.so
+  ${ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
+  ${ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
   -lboost_serialization
   -lcrypto
 )
@@ -105,8 +104,8 @@ target_link_libraries(${PROJECT_NAME}_stereo
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-$ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-$ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/g2o/lib/libg2o.so
+${ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
+${ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
 -lboost_serialization
 -lcrypto
 )
@@ -125,8 +124,8 @@ target_link_libraries(${PROJECT_NAME}_rgbd
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-$ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-$ENV{ORB_SLAM3_ROOT_DIR}/Thirdparty/g2o/lib/libg2o.so
+${ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
+${ORB_SLAM3_DIR}/Thirdparty/g2o/lib/libg2o.so
 -lboost_serialization
 -lcrypto
 )
@@ -145,8 +144,8 @@ install(DIRECTORY ros/config/
   DESTINATION share/${PROJECT_NAME}/ros/config
 )
 
-install(DIRECTORY orb_slam2/Vocabulary/
-  DESTINATION share/${PROJECT_NAME}/orb_slam2/Vocabulary
+install(DIRECTORY ORB_SLAM3/Vocabulary/
+  DESTINATION share/${PROJECT_NAME}/ORB_SLAM3/Vocabulary
 )
 
 if(BUILD_TESTING)

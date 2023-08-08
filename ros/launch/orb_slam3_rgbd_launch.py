@@ -36,7 +36,7 @@ def generate_launch_description():
             'voc_file',
             default_value=os.path.join(
                 get_package_share_directory("orb_slam2_ros"),
-                'ros', 'config', 'ORBvoc.txt'),
+                'ORB_SLAM3', 'Vocabulary', 'ORBvoc.txt'),
             description='Full path to vocabulary file to use'),
         DeclareLaunchArgument(
             'setting_file',
