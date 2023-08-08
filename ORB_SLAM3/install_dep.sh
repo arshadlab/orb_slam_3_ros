@@ -7,7 +7,7 @@ cd build
 rm -f CMakeCache.txt
 cmake ..
 make -j$(nproc) 
-sudo make install
+make install
 
 cd ../../../Thirdparty/Pangolin
 mkdir -p build
@@ -15,5 +15,5 @@ cd build
 rm -f CMakeCache.txt
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j$(nproc) 
-sudo make install
+make install
 
