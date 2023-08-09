@@ -162,7 +162,6 @@ ament_export_dependencies(
   rosidl_default_runtime
 )
 
-# Add path for runtime
-list(APPEND CMAKE_INSTALL_RPATH "/usr/local/lib" "${ORB_SLAM3_DIR}/lib" "${ORB_SLAM3_DIR}/Thirdparty/DBoW2/lib" "${ORB_SLAM3_DIR}/Thirdparty/g2o/lib")
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/env.dsv.in")
 
 ament_package()

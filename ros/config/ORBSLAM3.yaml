@@ -19,8 +19,8 @@ Camera1.p1: -0.005358
 Camera1.p2: 0.002628
 Camera1.k3: 1.163314
 
-Camera.width: 1280
-Camera.height: 720
+#Camera.width: 1280
+#Camera.height: 720
 
 # Camera frames per second 
 Camera.fps: 30

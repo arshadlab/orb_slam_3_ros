@@ -12,7 +12,7 @@ def generate_launch_description():
     params_file = LaunchConfiguration('params_file')
     voc_file = LaunchConfiguration('voc_file')
     setting_file = LaunchConfiguration('setting_file')
- 
+
     remappings = [
         ('/camera/rgb/image_raw', '/camera/color/image_raw'),
         ('/camera/depth_registered/image_raw', '/camera/depth/image_rect_raw'),
@@ -54,7 +54,7 @@ def generate_launch_description():
             ],
             package='orb_slam3_ros',
             executable='orb_slam3_ros_rgbd',
-            name='orb_slam2_rgbd',
+            name='orb_slam3_rgbd',
             output='screen',
             remappings=remappings
         )

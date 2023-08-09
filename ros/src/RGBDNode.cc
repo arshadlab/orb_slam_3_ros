@@ -81,19 +81,11 @@ void RGBDNode::ImageCallback(
     return;
   }
 
-//printf("cv_ptrRGB header seq: %u\n", cv_ptrRGB->header.seq);
-printf("cv_ptrRGB header stamp: %u.%u\n", cv_ptrRGB->header.stamp.sec, cv_ptrRGB->header.stamp.nanosec);
-printf("cv_ptrRGB header frame_id: %s\n", cv_ptrRGB->header.frame_id.c_str());
-printf("cv_ptrRGB encoding: %s\n", cv_ptrRGB->encoding.c_str());
-printf("cv_ptrRGB image dimensions: %d x %d\n", cv_ptrRGB->image.rows, cv_ptrRGB->image.cols);
-
-printf("msgRGB header seq: %u\n", msgRGB->header.stamp.sec);
-printf("msgRGB header stamp: %u.%u\n", msgRGB->header.stamp.sec, msgRGB->header.stamp.nanosec);
-printf("msgRGB header frame_id: %s\n", msgRGB->header.frame_id.c_str());
-printf("msgRGB height: %d\n", msgRGB->height);
-printf("msgRGB width: %d\n", msgRGB->width);
-printf("msgRGB encoding: %s\n", msgRGB->encoding.c_str());
-
+  #if 0  //For debugging
+    printf("msgRGB header frame_id: %s\n", msgRGB->header.frame_id.c_str());
+    printf("msgRGB image dimensions: %d x %x\n", msgRGB->height, msgRGB->width);
+    printf("msgRGB encoding: %s\n", msgRGB->encoding.c_str());
+  #endif
 
   cv_bridge::CvImageConstPtr cv_ptrD;
   try {
@@ -108,5 +100,5 @@ printf("msgRGB encoding: %s\n", msgRGB->encoding.c_str());
   rclcpp::Time msg_time = cv_ptrRGB->header.stamp;
   orb_slam_->TrackRGBD(cv_ptrRGB->image, cv_ptrD->image, msg_time.seconds());
 
-  //Update();
+  Update();
 }
