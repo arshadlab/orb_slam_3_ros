@@ -1,11 +1,23 @@
-# ORB-SLAM2
+# ROS2 Wrapper for ORBSLAM3
+
+This project has been developed by adapting the existing ROS2 wrapper for ORBSLAM2 to be compatible with ORBSLAM3, bringing the advancements and features of ORBSLAM3 into the ROS2 ecosystem.
+
+
+
+https://github.com/arshadlab/orb_slam_3_ros/assets/85929438/3e9142df-be70-4798-9153-f49666df5575
+
+
+
+
+**ORB-SLAM3 Authors:**: Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, José M. M. Montiel, Juan D. Tardos.
+
 **ORB-SLAM2 Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2)).
 The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM3.git).
 
-# ORB-SLAM2 ROS node
-This is the ROS implementation of the ORB-SLAM2 real-time SLAM library for **Monocular**, **Stereo** and **RGB-D** cameras that computes the camera trajectory and a sparse 3D reconstruction (in the stereo and RGB-D case with true scale). It is able to detect loops and relocalize the camera in real time. This implementation removes the Pangolin dependency, and the original viewer. All data I/O is handled via ROS topics. For vizualization you can use RViz. This repository is maintained by [Lennart Haller](http://lennarthaller.de) on behalf of [appliedAI](http://appliedai.de).
+# ORB-SLAM3 ROS node
+This is the ROS implementation of the ORB-SLAM3 real-time SLAM library for **Monocular**, **Stereo** and **RGB-D** cameras that computes the camera trajectory and a sparse 3D reconstruction (in the stereo and RGB-D case with true scale). It is able to detect loops and relocalize the camera in real time. This implementation removes the Pangolin dependency, and the original viewer. All data I/O is handled via ROS topics. For vizualization you can use RViz. This repository is maintained by [Lennart Haller](http://lennarthaller.de) on behalf of [appliedAI](http://appliedai.de).
 ## Features
-- Full ROS compatibility
+- Full ROS2 compatibility
 - Supports a lot of cameras out of the box, such as the Intel RealSense family. See the run section for a list
 - Data I/O via ROS topics
 - Parameters can be set with the rqt_reconfigure gui during runtime
@@ -26,7 +38,7 @@ ORB-SLAM2 is released under a [GPLv3 license](https://github.com/aaide/ORB_SLAM3
 
 For a closed-source version of ORB-SLAM2 for commercial purposes, please contact the authors: orbslam (at) unizar (dot) es.
 
-If you use ORB-SLAM2 (Monocular) in an academic work, please cite:
+If you use ORB-SLAM3 (Monocular) in an academic work, please cite:
 
     @article{murTRO2015,
       title={{ORB-SLAM}: a Versatile and Accurate Monocular {SLAM} System},
