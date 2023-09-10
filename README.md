@@ -68,6 +68,8 @@ ros2 launch orb_slam3_ros orb_slam3_rgbd_launch.py
 ros2 bag play /home/arshad/mapped/projects/edge_insight_for_amr/edge_insights_for_amr/Edge_Insights_for_Autonomous_Mobile_Robots_2023.1_Robot/AMR_containers/01_docker_sdk_env/docker_compose/06_bags/robot1_bag/rosbag2_2022_02_22-16_59_26_0.db3 -l --remap /camera/color/image_raw:=/camera/color/image_raw   /camera/aligned_depth_to_color/image_raw:=/camera/depth/image_rect_raw /camera/color/camera_info:=/camera/color/camera_info
 ```
 
+The launch command initiates the rgbd node, which subscribes to the /camera/color/camera_info topic. Once it captures the initial message, it establishes the ORBSlam3 object based on the received camera information. 
+
 https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/edge-solutions/autonomous-mobile-robots.html
 
 # ORB-SLAM3 ROS node
