@@ -14,6 +14,11 @@ https://github.com/arshadlab/orb_slam_3_ros/assets/85929438/3e9142df-be70-4798-9
 **ORB-SLAM2 Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2)).
 The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM3.git).
 
+```
+ros2 launch orb_slam3_ros orb_slam3_rgbd_launch.py
+ros2 bag play /home/arshad/mapped/projects/edge_insight_for_amr/edge_insights_for_amr/Edge_Insights_for_Autonomous_Mobile_Robots_2023.1_Robot/AMR_containers/01_docker_sdk_env/docker_compose/06_bags/robot1_bag/rosbag2_2022_02_22-16_59_26_0.db3 -l --remap /camera/color/image_raw:=/camera/color/image_raw   /camera/aligned_depth_to_color/image_raw:=/camera/depth/image_rect_raw /camera/color/camera_info:=/camera/color/camera_info
+```
+
 # ORB-SLAM3 ROS node
 This is the ROS implementation of the ORB-SLAM3 real-time SLAM library for **Monocular**, **Stereo** and **RGB-D** cameras that computes the camera trajectory and a sparse 3D reconstruction (in the stereo and RGB-D case with true scale). It is able to detect loops and relocalize the camera in real time. This implementation removes the Pangolin dependency, and the original viewer. All data I/O is handled via ROS topics. For vizualization you can use RViz. This repository is maintained by [Lennart Haller](http://lennarthaller.de) on behalf of [appliedAI](http://appliedai.de).
 ## Features
