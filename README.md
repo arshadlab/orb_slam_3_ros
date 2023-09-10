@@ -28,15 +28,13 @@ git clone https://github.com/arshadlab/orb_slam_3_ros.git
 ```
 
 ## Install dependencies
-This ROS2 node requires colcon to build. This package depends on a number of other ROS packages which ship with the default installation of ROS2 Humble.
-If they are not installed use [rosdep](http://wiki.ros.org/rosdep) to install them. In your colcon_ws folder run
-
+To build this ROS2 node, you need colcon. This package relies on several ROS packages included in the standard ROS2 Humble installation. If these packages aren't present, utilize [rosdep](http://wiki.ros.org/rosdep) for installation. Execute the following in your colcon_ws directory:
 ```
 sudo rosdep init
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 ```
-to install all dependencies for all packages. If you already initialized rosdep you get a warning which you can ignore.
+If you already initialized rosdep you get a warning which you can ignore.
 
 ## Building
 Steps:
@@ -51,13 +49,13 @@ cd ./src/orb_slam_3_ros/ORB_SLAM3/
 ./install_dep.sh
 ```
 
-Build ORB_SLAM3
+**Build ORB_SLAM3**
 ```
 cd ./src/orb_slam_3_ros/ORB_SLAM3/
 ./build.sh
 ```
 
-Build ROS2 wrapper
+**Build ROS2 wrapper**
 ```
 cd colcon_ws
 colcon build --symlink-install
