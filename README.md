@@ -70,6 +70,8 @@ ros2 launch orb_slam3_ros orb_slam3_rgbd_launch.py
 ros2 bag play /home/arshad/mapped/projects/edge_insight_for_amr/edge_insights_for_amr/Edge_Insights_for_Autonomous_Mobile_Robots_2023.1_Robot/AMR_containers/01_docker_sdk_env/docker_compose/06_bags/robot1_bag/rosbag2_2022_02_22-16_59_26_0.db3 -l --remap /camera/color/image_raw:=/camera/color/image_raw   /camera/aligned_depth_to_color/image_raw:=/camera/depth/image_rect_raw /camera/color/camera_info:=/camera/color/camera_info
 ```
 
+https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/edge-solutions/autonomous-mobile-robots.html
+
 # ORB-SLAM3 ROS node
 This is the ROS implementation of the ORB-SLAM3 real-time SLAM library for **Monocular**, **Stereo** and **RGB-D** cameras that computes the camera trajectory and a sparse 3D reconstruction (in the stereo and RGB-D case with true scale). It is able to detect loops and relocalize the camera in real time. This implementation removes the Pangolin dependency, and the original viewer. All data I/O is handled via ROS topics. For vizualization you can use RViz. This repository is maintained by [Lennart Haller](http://lennarthaller.de) on behalf of [appliedAI](http://appliedai.de).
 ## Features
@@ -218,18 +220,7 @@ So the save_map services are:
 The save_map service expects the name of the file the map should be saved at as input.
 
 At the moment, while the save to file takes place, the SLAM is inactive.
-
-# 5. Run
-After sourcing your setup bash using
-```
-source devel/setup.bash
-```
-## Suported cameras
-| Camera               | Mono                                                           | Stereo                                                           | RGBD                                                       |
-|----------------------|----------------------------------------------------------------|------------------------------------------------------------------|------------------------------------------------------------|
-| Intel RealSense r200 | ``` roslaunch orb_slam3_ros orb_slam2_r200_mono.launch ```     | ``` roslaunch orb_slam3_ros orb_slam2_r200_stereo.launch ```     | ``` roslaunch orb_slam3_ros orb_slam2_r200_rgbd.launch ``` |
-| Intel RealSense d435 | ``` roslaunch orb_slam3_ros orb_slam2_d435_mono.launch ```     | -                                                                | ``` roslaunch orb_slam3_ros orb_slam2_d435_rgbd.launch ``` |
-| Mynteye S            | ```roslaunch orb_slam3_ros orb_slam2_mynteye_s_mono.launch ``` | ```roslaunch orb_slam3_ros orb_slam2_mynteye_s_stereo.launch ``` | -                                                          |                     |                                                            |                                                              |                                                            |
+                                                         |
 
 Use the command from the corresponding cell for your camera to launch orb_slam3_ros with the right parameters for your setup.
 
