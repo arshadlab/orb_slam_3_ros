@@ -14,6 +14,48 @@ https://github.com/arshadlab/orb_slam_3_ros/assets/85929438/3e9142df-be70-4798-9
 **ORB-SLAM2 Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2)).
 The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM3.git).
 
+## Building orb_slam3_ros
+We have tested the library in **Ubuntu 16.04** with **ROS Kinetic** and **Ubuntu 18.04** with **ROS Melodic**. A powerful computer (e.g. i7) will ensure real-time performance and provide more stable and accurate results.
+A C++11 compiler is needed.
+
+## Getting the code
+Clone the repository into your colcon workspace:
+```
+git clone https://github.com/arshadlab/orb_slam_3_ros.git
+```
+
+## ROS
+This ROS node requires catkin_make_isolated or catkin build to build. This package depends on a number of other ROS packages which ship with the default installation of ROS.
+If they are not installed use [rosdep](http://wiki.ros.org/rosdep) to install them. In your catkin folder run
+```
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+```
+to install all dependencies for all packages. If you already initialized rosdep you get a warning which you can ignore.
+
+## Building
+Build Dependencies
+
+```
+cd ./src/orb_slam_3_ros/ORB_SLAM3/
+./install_dep.sh
+```
+
+Build ORB_SLAM3
+```
+cd ./src/orb_slam_3_ros/ORB_SLAM3/
+./build.sh
+```
+
+Build ROS2 wrapper
+```
+cd colcon_ws
+colcon build --symlink-install
+```
+
+Running RGBD app
+
 ```
 ros2 launch orb_slam3_ros orb_slam3_rgbd_launch.py
 ros2 bag play /home/arshad/mapped/projects/edge_insight_for_amr/edge_insights_for_amr/Edge_Insights_for_Autonomous_Mobile_Robots_2023.1_Robot/AMR_containers/01_docker_sdk_env/docker_compose/06_bags/robot1_bag/rosbag2_2022_02_22-16_59_26_0.db3 -l --remap /camera/color/image_raw:=/camera/color/image_raw   /camera/aligned_depth_to_color/image_raw:=/camera/depth/image_rect_raw /camera/color/camera_info:=/camera/color/camera_info
