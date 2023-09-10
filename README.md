@@ -15,18 +15,22 @@ https://github.com/arshadlab/orb_slam_3_ros/assets/85929438/3e9142df-be70-4798-9
 The original implementation can be found [here](https://github.com/raulmur/ORB_SLAM3.git).
 
 ## Building orb_slam3_ros
-We have tested the library in **Ubuntu 16.04** with **ROS Kinetic** and **Ubuntu 18.04** with **ROS Melodic**. A powerful computer (e.g. i7) will ensure real-time performance and provide more stable and accurate results.
-A C++11 compiler is needed.
+This package is tested on **Ubuntu 22.04** with **ROS2 Humble** on a TigerLake NUC.
 
 ## Getting the code
 Clone the repository into your colcon workspace:
+Wrapper repo includes a modified version of latest ORB_SLAM3.
+
 ```
+mkdir -p colcon_ws/src
+cd colcon_ws/src
 git clone https://github.com/arshadlab/orb_slam_3_ros.git
 ```
 
-## ROS
-This ROS node requires catkin_make_isolated or catkin build to build. This package depends on a number of other ROS packages which ship with the default installation of ROS.
-If they are not installed use [rosdep](http://wiki.ros.org/rosdep) to install them. In your catkin folder run
+## Install dependencies
+This ROS2 node requires colcon to build. This package depends on a number of other ROS packages which ship with the default installation of ROS2 Humble.
+If they are not installed use [rosdep](http://wiki.ros.org/rosdep) to install them. In your colcon_ws folder run
+
 ```
 sudo rosdep init
 rosdep update
@@ -35,7 +39,12 @@ rosdep install --from-paths src --ignore-src -r -y
 to install all dependencies for all packages. If you already initialized rosdep you get a warning which you can ignore.
 
 ## Building
-Build Dependencies
+Steps:
+* Install ORB_SLAM3 Dependencies (e.g Eigen3 & Pangolin) using install_dep.sh script.
+* Build ORBSLAM3 using build.sh script.
+* Build ROS2 wrapper node using colcon command.
+
+**Install ORB_SLAM3 dependencies**:
 
 ```
 cd ./src/orb_slam_3_ros/ORB_SLAM3/
